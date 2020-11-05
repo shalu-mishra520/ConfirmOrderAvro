@@ -1,0 +1,21 @@
+spring:
+ profiles:
+  active: local
+---
+spring:
+   profiles: local
+   kafka:
+    template:
+      default-topic: order-details
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer:  org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      bootstrap-servers:  localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: order-details-listener-group
+    admin:
+      properties:
+        bootstrap.servers: localhost:9092

@@ -47,39 +47,30 @@ public class SaveOrderService implements serviceInterface{
 		//set values
 		//iterate the values
 		
-		Map<Integer,List<ProductDetails>> productMap=null;
-		Map<Integer,List<Address>> addressMap=null;
+		List<ProductDetails> productlist=null;
+		Map<Integer,Address> addressMap=null;
+	    
 		
 		if(orderId!=null) {
-			productMap=fetchlist.fetchProductDetails(orderId.getOrderId());
+			productlist=fetchlist.fetchProductDetails(orderId.getOrderId());
+			
+			for(ProductDetails arg:productlist) {
+				System.out.println("after fetching the list:"+arg.getProductid());
+			}
+			
 			addressMap=fetchlist.fetchCustomerDetails(orderId.getOrderId());
-			
-			for (Entry<Integer, List<ProductDetails>> entry : productMap.entrySet()){
-			     System.out.println("Order id: "+entry.getKey() + ":" +" Product : "+entry.getValue().get(0).getProductid());
-			     System.out.println("Order id: "+entry.getKey() + ":" +" Product : "+entry.getValue().get(0).getProductname());
-			     System.out.println("Order id: "+entry.getKey() + ":" +" Product : "+entry.getValue().get(0).getCompanyname());
-			     System.out.println("Order id: "+entry.getKey() + ":" +" Product : "+entry.getValue().get(0).getEstimatedprice());
-			     orderPlaced.setOrderId(orderId.getOrderId());
-			     productDetails.setProductid(entry.getValue().get(0).getProductid());
-			     productDetails.setProductname(entry.getValue().get(0).getProductname());
-			     productDetails.setCompanyname(entry.getValue().get(0).getCompanyname());
-			     productDetails.setEstimatedprice(entry.getValue().get(0).getEstimatedprice());
-			   }
-			
-			for (Entry<Integer, List<Address>> entry : addressMap.entrySet()){
-
-				System.out.println("Order id: "+entry.getKey() + ":" +" Customer List: "+entry.getValue().get(0));
-				
-				address.setStreetname(entry.getValue().get(0).getStreetname());
-				address.setCity(entry.getValue().get(0).getCity());
-				address.setCountry(entry.getValue().get(0).getCountry());
-				address.setPostalcode(entry.getValue().get(0).getPostalcode());
+			for (Entry<Integer,Address> entry : addressMap.entrySet()){
+				System.out.println("Order id: "+entry.getKey() + ":" +" Customer List: "+entry.getValue().getStreetname());
+				address.setStreetname(entry.getValue().getStreetname());
+				address.setCity(entry.getValue().getCity());
+				address.setCountry(entry.getValue().getCountry());
+				address.setPostalcode(entry.getValue().getPostalcode());
 			}
 			
 
-
+			orderPlaced.setOrderId(orderId.getOrderId());
 			orderDetails.setOrderplaced(orderPlaced);
-			orderDetails.setProductDetails(productDetails);
+			orderDetails.setProductDetails(productlist);
 			orderDetails.setAddress(address);
 			orderDetails.setConfirmationId(confirmationOrderId.setUniqueID());
 			

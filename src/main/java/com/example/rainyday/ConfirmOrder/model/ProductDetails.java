@@ -10,12 +10,6 @@ public class ProductDetails {
 	private String productname;
 	private String companyname;
 	private float estimatedprice;
-	public ProductDetails(int productid, String productname, String companyname, float estimatedprice) {
-		this.productid = productid;
-		this.productname = productname;
-		this.companyname = companyname;
-		this.estimatedprice = estimatedprice;
-	}
 	public ProductDetails() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -1,5 +1,7 @@
 package com.example.rainyday.ConfirmOrder.model;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,24 +26,17 @@ public class OrderDetails {
 		this.confirmationId = confirmationId;
 	}
 
-	private ProductDetails productDetails;
+	private List<ProductDetails> productDetails;
 	
-	
-	
-	
-	public ProductDetails getProductDetails() {
+		
+	public List<ProductDetails> getProductDetails() {
 		return productDetails;
 	}
 
-	public void setProductDetails(ProductDetails productDetails) {
+	public void setProductDetails(List<ProductDetails> productDetails) {
 		this.productDetails = productDetails;
 	}
 
-	
-	
-
-	
-	
 	public Address getAddress() {
 		return address;
 	}

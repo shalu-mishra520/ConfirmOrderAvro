@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.rainyday.ConfirmOrder.model.OrderDetails;
 import com.example.rainyday.ConfirmOrder.model.OrderPlaced;
+import com.example.rainyday.ConfirmOrder.producer.ConfirmOrderProducer;
 import com.example.rainyday.ConfirmOrder.serviceInterface.serviceInterface;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 
 @RestController
@@ -31,15 +33,21 @@ public class OrderConfirmation {
 	@Autowired
 	serviceInterface setDetails;
 	
+	@Autowired
+	ConfirmOrderProducer orderProducer;
+	
 	
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@PostMapping("/order")
-	public  ResponseEntity<OrderDetails> setOrderid( @RequestBody OrderPlaced orderid) {
+	public  ResponseEntity<OrderDetails> setOrderid( @RequestBody OrderPlaced orderid) throws JsonProcessingException {
 		
 		logger.info("inside the setorderid:");
 		
 		OrderDetails orderdetails=setDetails.setOrderDetails(orderid);
+		if(orderdetails!=null) {
+			orderProducer.sendOrderDetailsEvents(orderdetails);
+		}
 		
 		logger.info("outside the orderdetails");
 		
