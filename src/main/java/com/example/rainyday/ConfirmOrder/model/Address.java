@@ -9,6 +9,22 @@ public class Address {
 	private String city;
 	private String country;
 	private long postalcode;
+	
+	
+	
+	
+	
+	public Address() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Address(String streetname, String city, String country, long postalcode) {
+		super();
+		this.streetname = streetname;
+		this.city = city;
+		this.country = country;
+		this.postalcode = postalcode;
+	}
 	public String getStreetname() {
 		return streetname;
 	}

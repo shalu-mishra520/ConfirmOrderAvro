@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.rainyday.ConfirmOrder.model.OrderDetails;
+import com.example.rainyday.ConfirmOrder.model.OrderPlaced;
+import com.example.rainyday.ConfirmOrder.serviceInterface.serviceInterface;
 
 
 @RestController
@@ -26,14 +28,22 @@ public class OrderConfirmation {
 	@Autowired
 	OrderDetails orderdetails;
 	
+	@Autowired
+	serviceInterface setDetails;
+	
+	
+	Logger logger = LoggerFactory.getLogger(getClass());
+	
 	@PostMapping("/order")
-	public ResponseEntity<String> getOrderid( @RequestBody String orderid) {
+	public  ResponseEntity<OrderDetails> setOrderid( @RequestBody OrderPlaced orderid) {
 		
-		Logger logger = LoggerFactory.getLogger(getClass());
-		logger.info(orderid);
-		String confirmationid= orderdetails.getConfirmationId();
+		logger.info("inside the setorderid:");
 		
-		return ResponseEntity.status(HttpStatus.OK).body("Your order is successfully placed withconfirmationid" +confirmationid);
+		OrderDetails orderdetails=setDetails.setOrderDetails(orderid);
+		
+		logger.info("outside the orderdetails");
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(orderdetails);
 		
 	}
 	

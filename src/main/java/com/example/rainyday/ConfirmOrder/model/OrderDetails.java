@@ -8,23 +8,37 @@ import com.example.rainyday.ConfirmOrder.utility.ConfirmationOrderId;
 @Component
 public class OrderDetails {
 	
-	@Autowired
-	private ConfirmationOrderId confirmationorderid;
+    private Address address;
+	
+	private OrderPlaced orderplaced;
 	
 	private String confirmationId;
 	
-		
+	
+	
 	public String getConfirmationId() {
-		return confirmationorderid.setUniqueID();
+		return confirmationId;
 	}
 
 	public void setConfirmationId(String confirmationId) {
 		this.confirmationId = confirmationId;
 	}
 
-	private Address address;
+	private ProductDetails productDetails;
 	
-	private OrderPlaced orderplaced;
+	
+	
+	
+	public ProductDetails getProductDetails() {
+		return productDetails;
+	}
+
+	public void setProductDetails(ProductDetails productDetails) {
+		this.productDetails = productDetails;
+	}
+
+	
+	
 
 	
 	

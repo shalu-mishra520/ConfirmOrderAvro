@@ -8,22 +8,22 @@ public class ProductDetails {
 	
 	private int productid;
 	private String productname;
-	public ProductDetails() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	private String companyname;
 	private float estimatedprice;
-	public int getProductid() {
-		return productid;
-	}
 	public ProductDetails(int productid, String productname, String companyname, float estimatedprice) {
-		super();
 		this.productid = productid;
 		this.productname = productname;
 		this.companyname = companyname;
 		this.estimatedprice = estimatedprice;
 	}
+	public ProductDetails() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public int getProductid() {
+		return productid;
+	}
+	
 	public void setProductid(int productid) {
 		this.productid = productid;
 	}
