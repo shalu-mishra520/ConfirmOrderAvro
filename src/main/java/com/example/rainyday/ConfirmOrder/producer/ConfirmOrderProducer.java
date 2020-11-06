@@ -1,7 +1,7 @@
 package com.example.rainyday.ConfirmOrder.producer;
 
 
-import java.util.concurrent.ExecutionException;
+
 
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
@@ -92,7 +92,7 @@ public class ConfirmOrderProducer {
 	 * }
 	 */
 
-	public void sendOrderDetailsEvents(OrderDetails orderDetails) throws JsonProcessingException {
+	public void sendOrderDetailsEvents(OrderDetails orderDetails) throws JsonProcessingException  {
 		Integer key= orderDetails.getOrderplaced().getOrderId();
 		String value=objMapper.writeValueAsString(orderDetails);
 		logger.info("value in producer :"+value);

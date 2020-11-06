@@ -1,7 +1,7 @@
 package com.example.rainyday.ConfirmOrder.utility;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,27 +18,18 @@ public class ProductList {
 	public Map<Integer,List<ProductDetails>> getlistofproduct() {
 		
 		ProductDetails prodA1=new ProductDetails();
-		/*
-		 * ProductDetails prodB1=new ProductDetails(); ProductDetails prodC1=new
-		 * ProductDetails();
-		 */
+		ProductDetails prodB1=new ProductDetails(); 
+		 
 		prodA1.setProductid(1);
 		prodA1.setProductname("Amul Butter");
 		prodA1.setCompanyname("Amul");
 		prodA1.setEstimatedprice(58);
 		
-		/*
-		 * prodB1.setProductid(2); prodB1.setProductname("Basmti Rice");
-		 * prodB1.setCompanyname("Rozana"); prodB1.setEstimatedprice(72);
-		 * 
-		 * prodC1.setProductid(3); prodC1.setProductname("Amul Milk");
-		 * prodC1.setCompanyname("Amul"); prodC1.setEstimatedprice(98);
-		 */
+		
+	    prodB1.setProductid(2); prodB1.setProductname("Basmti Rice");
+		prodB1.setCompanyname("Rozana"); prodB1.setEstimatedprice(72);
+		 
 		ProductDetails prodA2=new ProductDetails();
-		/*
-		 * ProductDetails prodB2=new ProductDetails(); ProductDetails prodC2=new
-		 * ProductDetails();
-		 */
 		prodA2.setProductid(4);
 		prodA2.setProductname("Kisaan Ketchup");
 		prodA2.setCompanyname("Kissan");
@@ -57,7 +48,8 @@ public class ProductList {
 		ArrayList<ProductDetails> productB=new ArrayList<ProductDetails>();
 		
 		productA.add(prodA1);
-		productB.add(prodA2);
+		productA.add(prodA2);
+		productB.add(prodB1);
 		
 		 
         Map<Integer,List<ProductDetails>> stockItems= new HashMap<Integer, List<ProductDetails>>();
@@ -72,10 +64,18 @@ public class ProductList {
 	
 	public Map<Integer,Address> getlistofCustomer() {
 		 
-		Address customerA= new Address("Gk Road 23","New Delhi","India",11009);	
+		Address customerA= new Address();	
+		customerA.setStreetname("Gk Road 23");
+		customerA.setCity("New Delhi");
+		customerA.setCountry("INDIA");
+		customerA.setPostalcode(11009);
          
-		Address customerB= new Address("lal Bagh 03","Punjab","India",11089);	
-		Address customerC= new Address("Gk Road 23","New Delhi","Chandigarh",11009);	
+		Address customerB= new Address();	
+		customerB.setStreetname("lal bagh 34");
+		customerB.setCity("Haryana");
+		customerB.setCountry("INDIA");
+		customerB.setPostalcode(11089);
+			
         
          
          
@@ -83,7 +83,7 @@ public class ProductList {
         
          customerDetailList.put(1,customerA);
          customerDetailList.put(2,customerB);
-         customerDetailList.put(3,customerC);
+         
           return customerDetailList;
 		 
 		}

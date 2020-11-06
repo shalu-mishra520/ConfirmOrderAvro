@@ -18,13 +18,7 @@ public class Address {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Address(String streetname, String city, String country, long postalcode) {
-		super();
-		this.streetname = streetname;
-		this.city = city;
-		this.country = country;
-		this.postalcode = postalcode;
-	}
+	
 	public String getStreetname() {
 		return streetname;
 	}
@@ -49,5 +43,13 @@ public class Address {
 	public void setPostalcode(long postalcode) {
 		this.postalcode = postalcode;
 	}
+	@Override
+	public String toString() {
+		return "Address [streetname=" + streetname + ", city=" + city + ", country=" + country + ", postalcode="
+				+ postalcode + "]";
+	}
+	
+	
+	
 
 }

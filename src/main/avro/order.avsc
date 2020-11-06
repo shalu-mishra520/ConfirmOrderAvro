@@ -1,0 +1,41 @@
+[{
+"namespace":"com.example",
+"type":"record",
+"name": "Address",
+"doc":"Avro Schema for Address",
+"fields":[
+{"name":"streetname","type":"string","doc":"street name"},
+{"name":"city","type":"string","doc":"city name"},
+{"name":"country","type":"string","doc":"country name"},
+{"name":"postalcode","type":"long","doc":"postal code"}
+]
+},
+
+{
+"namespace":"com.example",
+"type":"record",
+"name": "OrderPlaced",
+"doc":"Avro Schema for OrderPlaced",
+"fields":[
+{"name":"orderId","type":"int","doc":"orderid"}
+]
+},
+
+{
+"namespace":"com.example",
+"type":"record",
+"name": "OrderDetails",
+"doc":"Avro Schema for OrderDetails",
+"fields":[
+{"name":"confirmationId","type":"string","doc":"order confirmationid "},
+{"name":"Address","type":"com.example.Address"},
+{"name":"OrderPlaced","type":"com.example.OrderPlaced","doc":"orderid"},
+{"name":"productDetails","type":{"name":"ProductDetails","type":"record","fields":[
+{"name":"productid","type":"int"},
+{"name":"productname","type":"string"},
+{"name":"companyname","type":"string"},
+{"name":"estimatedprice","type":"float"}]}
+
+}]
+}
+]

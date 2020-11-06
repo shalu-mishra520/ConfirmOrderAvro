@@ -6,16 +6,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.config.TopicBuilder;
 
-public class Config {
+
 	
 	@Configuration
 	@Profile("local")
-	public class AutoConfiguration {
+	public class Config {
 		
 		  @Bean 
 		  public NewTopic libraryEvents() {
-			  return TopicBuilder.name("order-details").partitions(1).replicas(1).build(); 
+			  return TopicBuilder.name("order-details").partitions(3).replicas(3).build(); 
 		  }
 	}
 
-}
+

@@ -39,4 +39,13 @@ public class ProductDetails {
 	public void setEstimatedprice(float estimatedprice) {
 		this.estimatedprice = estimatedprice;
 	}
+	@Override
+	public String toString() {
+		return "ProductDetails [productid=" + productid + ", productname=" + productname + ", companyname="
+				+ companyname + ", estimatedprice=" + estimatedprice + "]";
+	}
+	
+	
+	
+	
 }

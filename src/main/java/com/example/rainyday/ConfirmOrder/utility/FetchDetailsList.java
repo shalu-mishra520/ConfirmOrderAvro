@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,34 +22,38 @@ public class FetchDetailsList {
 	ProductList prodStock;
 	
 
-	@Autowired
-	ProductDetails productDetails;
+	
+	Logger log=LoggerFactory.getLogger(FetchDetailsList.class);
 	
 	
 	public List<ProductDetails> fetchProductDetails(Integer orderId) {
+		ProductDetails productDetails=null;
 		
 		Map<Integer,List<ProductDetails>> productMap=null;
-		Map<Integer,List<ProductDetails>> productFetch=new HashMap<Integer, List<ProductDetails>>();
+		
 		List<ProductDetails> productlist=new ArrayList<ProductDetails>();
-		System.out.println("start of validating orderid");
+		log.info("start of validating orderid");
 				if(orderId!=null){
 					productMap=prodStock.getlistofproduct();
-					System.out.println(productMap);
+					
 					if(productMap!=null) {
 						
 						for (Entry<Integer, List<ProductDetails>> entry : productMap.entrySet()){
 							{ 
 							 
 							 if(entry.getKey().equals(orderId)){
-								 System.out.println("Order id: "+entry.getKey() );
+								 log.info("Order id: "+entry.getKey() );
 								 
-								 productFetch.put(entry.getKey(),entry.getValue());
-								 for(ProductDetails list: entry.getValue()) {
-									 System.out.println("product id:"+list.getProductid());
-							    	 productDetails.setProductid(list.getProductid());
-								     productDetails.setProductname(list.getProductname());
-								     productDetails.setCompanyname(list.getCompanyname());
-								     productDetails.setEstimatedprice(list.getEstimatedprice());
+								 
+								 
+								 for(ProductDetails prod: entry.getValue()) {
+									 productDetails=new ProductDetails();
+									 log.info("product id:"+prod.getProductid());
+							    	 productDetails.setProductid(prod.getProductid());
+								     productDetails.setProductname(prod.getProductname());
+								     productDetails.setCompanyname(prod.getCompanyname());
+								     productDetails.setEstimatedprice(prod.getEstimatedprice());
+								     log.info("product details val:"+productDetails.getProductid());
 								     productlist.add(productDetails);
 								  }
 							    
@@ -64,20 +70,21 @@ public class FetchDetailsList {
 				
 			}
 	
-public Map<Integer,Address> fetchCustomerDetails(Integer orderId) {
+public Address fetchCustomerDetails(Integer orderId) {
 		
 		Map<Integer,Address> customerMap=null;
-				if(orderId!=null){
+				if(orderId!=null)
 					customerMap=prodStock.getlistofCustomer();
 					if(customerMap!=null && customerMap.containsKey(orderId)) {
 						
-						return customerMap;
+						return customerMap.get(orderId);
 						
 					}
+					return null;
 				  }
-				return customerMap;
+			
 				
 			}
 
 	
-}
+

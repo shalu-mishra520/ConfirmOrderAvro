@@ -12,6 +12,7 @@ public class OrderDetails {
 	
     private Address address;
 	
+    
 	private OrderPlaced orderplaced;
 	
 	private String confirmationId;
