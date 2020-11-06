@@ -47,24 +47,27 @@ public class SaveOrderService implements serviceInterface{
 		Logger log=LoggerFactory.getLogger(SaveOrderService.class);
 		
 		List<ProductDetails> productlist=null;
-		Map<Integer,Address> addressMap=null;
+		
 	    
 		
 		if(orderId!=null) {
 			productlist=fetchlist.fetchProductDetails(orderId.getOrderId());
-			
-			for(ProductDetails arg:productlist) {
-				log.info("after fetching the list:"+arg.getProductid());
+			log.info("order id of order placed: "+orderId.getOrderId());
+			try {
+		
+				
+				address=fetchlist.fetchCustomerDetails(orderId.getOrderId());
+				orderPlaced.setOrderId(orderId.getOrderId());
+				orderDetails.setOrderplaced(orderPlaced);
+				orderDetails.setProductDetails(productlist);
+				orderDetails.setAddress(address);
+				if(!productlist.isEmpty()&& address!=null) {
+					orderDetails.setConfirmationId(confirmationOrderId.setUniqueID());
+				}
+				
+			}catch(Exception e) {
+				log.info("execption occured :"+e);
 			}
-			
-			address=fetchlist.fetchCustomerDetails(orderId.getOrderId());
-			orderPlaced.setOrderId(orderId.getOrderId());
-			orderDetails.setOrderplaced(orderPlaced);
-			orderDetails.setProductDetails(productlist);
-			orderDetails.setAddress(address);
-			orderDetails.setConfirmationId(confirmationOrderId.setUniqueID());
-			
-			
 		}
 		return orderDetails;
 

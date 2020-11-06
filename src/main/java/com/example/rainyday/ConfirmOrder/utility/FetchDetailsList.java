@@ -27,48 +27,24 @@ public class FetchDetailsList {
 	
 	
 	public List<ProductDetails> fetchProductDetails(Integer orderId) {
-		ProductDetails productDetails=null;
+		
 		
 		Map<Integer,List<ProductDetails>> productMap=null;
 		
-		List<ProductDetails> productlist=new ArrayList<ProductDetails>();
+		
 		log.info("start of validating orderid");
 				if(orderId!=null){
 					productMap=prodStock.getlistofproduct();
 					
 					if(productMap!=null) {
 						
-						for (Entry<Integer, List<ProductDetails>> entry : productMap.entrySet()){
-							{ 
-							 
-							 if(entry.getKey().equals(orderId)){
-								 log.info("Order id: "+entry.getKey() );
-								 
-								 
-								 
-								 for(ProductDetails prod: entry.getValue()) {
-									 productDetails=new ProductDetails();
-									 log.info("product id:"+prod.getProductid());
-							    	 productDetails.setProductid(prod.getProductid());
-								     productDetails.setProductname(prod.getProductname());
-								     productDetails.setCompanyname(prod.getCompanyname());
-								     productDetails.setEstimatedprice(prod.getEstimatedprice());
-								     log.info("product details val:"+productDetails.getProductid());
-								     productlist.add(productDetails);
-								  }
-							    
-								 return productlist;
-							  }
-							 }
-							}
-						
-						}else {
-							System.out.println("inside the fetchproductDetails");
+						if(productMap.containsKey(orderId)) {
+							return productMap.get(orderId);
 						}
 					}
-				return productlist;
-				
-			}
+				}
+				return productMap.get(orderId);
+	     }
 	
 public Address fetchCustomerDetails(Integer orderId) {
 		
