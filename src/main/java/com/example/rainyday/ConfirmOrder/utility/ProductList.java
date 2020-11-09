@@ -23,17 +23,17 @@ public class ProductList {
 		prodA1.setProductid(1);
 		prodA1.setProductname("Amul Butter");
 		prodA1.setCompanyname("Amul");
-		prodA1.setEstimatedprice(58);
+		prodA1.setCurrentPrice(89);
 		
 		
 	    prodB1.setProductid(2); prodB1.setProductname("Basmti Rice");
-		prodB1.setCompanyname("Rozana"); prodB1.setEstimatedprice(72);
+		prodB1.setCompanyname("Rozana"); prodB1.setCurrentPrice(76);
 		 
 		ProductDetails prodA2=new ProductDetails();
 		prodA2.setProductid(4);
 		prodA2.setProductname("Kisaan Ketchup");
 		prodA2.setCompanyname("Kissan");
-		prodA2.setEstimatedprice(90);
+		prodA2.setCurrentPrice(59);
 		
 		/*
 		 * prodB2.setProductid(5); prodB2.setProductname("Hakka Noodles");

@@ -9,7 +9,15 @@ public class ProductDetails {
 	private int productid;
 	private String productname;
 	private String companyname;
-	private float estimatedprice;
+	private float currentPrice;
+	
+	
+	public float getCurrentPrice() {
+		return currentPrice;
+	}
+	public void setCurrentPrice(float currentPrice) {
+		this.currentPrice = currentPrice;
+	}
 	public ProductDetails() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -32,17 +40,6 @@ public class ProductDetails {
 	}
 	public void setCompanyname(String companyname) {
 		this.companyname = companyname;
-	}
-	public float getEstimatedprice() {
-		return estimatedprice;
-	}
-	public void setEstimatedprice(float estimatedprice) {
-		this.estimatedprice = estimatedprice;
-	}
-	@Override
-	public String toString() {
-		return "ProductDetails [productid=" + productid + ", productname=" + productname + ", companyname="
-				+ companyname + ", estimatedprice=" + estimatedprice + "]";
 	}
 	
 	

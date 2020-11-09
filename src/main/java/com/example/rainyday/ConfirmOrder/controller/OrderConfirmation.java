@@ -39,28 +39,20 @@ public class OrderConfirmation {
 	public  ResponseEntity<OrderDetails> setOrderid(@RequestBody OrderPlaced orderid) throws JsonProcessingException  {
 		
 		logger.info("inside the setorderid:");
-		
-		OrderDetails orderdetails=setDetails.setOrderDetails(orderid);
-		if(orderdetails!=null) {
-			orderProducer.sendOrderDetailsEvents(orderdetails);
-		}
-		
-		logger.info("outside the orderdetails");
+	   if(orderid!=null) {     //last change
+		   OrderDetails orderdetails=setDetails.setOrderDetails(orderid);
+			if(orderdetails!=null) {
+				orderProducer.sendOrderDetailsEvents(orderdetails);
+			}
+			
+			logger.info("outside the orderdetails");
+			 
+	   }	
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(orderdetails);
 		
 	}
 	
-	
-	/*
-	 * @KafkaListener(topics= {"order-details"}) public void
-	 * onMessage(ConsumerRecord<Integer, String> consumerRecord) throws
-	 * JsonMappingException, JsonProcessingException {
-	 * 
-	 * logger.info("Consumer Record order details::"+consumerRecord.toString());
-	 * 
-	 * }
-	 */
 	
 	
 	
