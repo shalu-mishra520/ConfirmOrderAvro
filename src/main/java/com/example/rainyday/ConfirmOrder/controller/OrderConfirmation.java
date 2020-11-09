@@ -35,7 +35,7 @@ public class OrderConfirmation {
 	
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
-	@PostMapping("/order")
+	@PostMapping("/order/confirm")
 	public  ResponseEntity<OrderDetails> setOrderid(@RequestBody OrderPlaced orderid) throws JsonProcessingException  {
 		
 		logger.info("inside the setorderid:");
