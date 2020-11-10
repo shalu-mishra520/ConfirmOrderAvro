@@ -135,7 +135,7 @@ public class ConfirmOrderProducer {
 	 * 
 	 */
 	private void onSuccessMethod(Integer key, String value, SendResult<Integer, String> result) {
-		logger.info("successfully message sent "+key+" "+value+" "+result.getProducerRecord().partition());
+		logger.info("successfully message sent "+key+" "+value+" "+result.getRecordMetadata().partition());
 
 	}
 
